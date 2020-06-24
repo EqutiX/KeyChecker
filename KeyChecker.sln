@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeySender", "KeyChecker\KeySender.csproj", "{A1A43A00-70E1-4286-B3F9-30DDCC28B10C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeySender", "KeySender\KeySender.csproj", "{A1A43A00-70E1-4286-B3F9-30DDCC28B10C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyReceiver", "KeyReceiver\KeyReceiver.csproj", "{D950C261-2158-4A71-9B30-ABD6A3778211}"
 EndProject

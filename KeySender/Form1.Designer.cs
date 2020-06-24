@@ -36,9 +36,9 @@
 			// 
 			this.btn_shortcut.Location = new System.Drawing.Point(13, 13);
 			this.btn_shortcut.Name = "btn_shortcut";
-			this.btn_shortcut.Size = new System.Drawing.Size(221, 64);
+			this.btn_shortcut.Size = new System.Drawing.Size(358, 64);
 			this.btn_shortcut.TabIndex = 1;
-			this.btn_shortcut.Text = "Ctrl+Shift+B";
+			this.btn_shortcut.Text = "Ctrl+Shift+B as 1 command";
 			this.btn_shortcut.UseVisualStyleBackColor = true;
 			this.btn_shortcut.Click += new System.EventHandler(this.btn_shortcut_Click);
 			// 
@@ -46,9 +46,9 @@
 			// 
 			this.btn_shortcut2.Location = new System.Drawing.Point(13, 83);
 			this.btn_shortcut2.Name = "btn_shortcut2";
-			this.btn_shortcut2.Size = new System.Drawing.Size(221, 64);
+			this.btn_shortcut2.Size = new System.Drawing.Size(358, 64);
 			this.btn_shortcut2.TabIndex = 2;
-			this.btn_shortcut2.Text = "B";
+			this.btn_shortcut2.Text = "Ctrl+Shift+B as 3 commands";
 			this.btn_shortcut2.UseVisualStyleBackColor = true;
 			this.btn_shortcut2.Click += new System.EventHandler(this.btn_shortcut2_Click);
 			// 
@@ -56,11 +56,11 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(467, 156);
+			this.ClientSize = new System.Drawing.Size(618, 239);
 			this.Controls.Add(this.btn_shortcut2);
 			this.Controls.Add(this.btn_shortcut);
 			this.Name = "Form1";
-			this.Text = "Key checker";
+			this.Text = "Key sender";
 			this.ResumeLayout(false);
 
 		}

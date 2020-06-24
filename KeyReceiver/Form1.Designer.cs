@@ -37,6 +37,7 @@
 			this.textBox1.Location = new System.Drawing.Point(13, 13);
 			this.textBox1.Multiline = true;
 			this.textBox1.Name = "textBox1";
+			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.textBox1.Size = new System.Drawing.Size(728, 399);
 			this.textBox1.TabIndex = 0;
 			// 
@@ -46,7 +47,7 @@
 			this.btn_quit.Name = "btn_quit";
 			this.btn_quit.Size = new System.Drawing.Size(162, 55);
 			this.btn_quit.TabIndex = 1;
-			this.btn_quit.Text = "Stop";
+			this.btn_quit.Text = "Stop tracking";
 			this.btn_quit.UseVisualStyleBackColor = true;
 			this.btn_quit.Click += new System.EventHandler(this.btn_quit_Click);
 			// 
@@ -58,7 +59,7 @@
 			this.Controls.Add(this.btn_quit);
 			this.Controls.Add(this.textBox1);
 			this.Name = "Form1";
-			this.Text = "Form1";
+			this.Text = "Key receiver";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();

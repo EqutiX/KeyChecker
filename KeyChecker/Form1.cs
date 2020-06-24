@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using WindowsInput;
 using WindowsInput.Native;
 
-namespace KeyChecker
+namespace KeySender
 {
 	public partial class Form1 : Form
 	{

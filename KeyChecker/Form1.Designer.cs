@@ -1,4 +1,4 @@
-﻿namespace KeyChecker
+﻿namespace KeySender
 {
 	partial class Form1
 	{

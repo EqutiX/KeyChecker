@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KeyChecker.Properties
+namespace KeySender.Properties
 {
 
 

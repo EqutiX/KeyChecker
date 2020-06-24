@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyChecker", "KeyChecker\KeyChecker.csproj", "{A1A43A00-70E1-4286-B3F9-30DDCC28B10C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyReceiver", "KeyReceiver\KeyReceiver.csproj", "{D950C261-2158-4A71-9B30-ABD6A3778211}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1A43A00-70E1-4286-B3F9-30DDCC28B10C}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{A1A43A00-70E1-4286-B3F9-30DDCC28B10C}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{A1A43A00-70E1-4286-B3F9-30DDCC28B10C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1A43A00-70E1-4286-B3F9-30DDCC28B10C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D950C261-2158-4A71-9B30-ABD6A3778211}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D950C261-2158-4A71-9B30-ABD6A3778211}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D950C261-2158-4A71-9B30-ABD6A3778211}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D950C261-2158-4A71-9B30-ABD6A3778211}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4D6778EE-36E9-46A2-A002-9F2DF49F0A5A}
+	EndGlobalSection
+EndGlobal

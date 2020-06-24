@@ -37,9 +37,6 @@ namespace KeySender
 			sim.Keyboard.KeyDown(VirtualKeyCode.LCONTROL);
 			sim.Keyboard.KeyDown(VirtualKeyCode.LSHIFT);
 			sim.Keyboard.KeyDown(VirtualKeyCode.VK_B);
-			sim.Keyboard.KeyUp(VirtualKeyCode.VK_B);
-			sim.Keyboard.KeyUp(VirtualKeyCode.LSHIFT);
-			sim.Keyboard.KeyUp(VirtualKeyCode.LCONTROL);
 		}
 	}
 }

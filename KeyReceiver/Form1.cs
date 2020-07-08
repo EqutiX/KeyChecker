@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -16,9 +17,13 @@ namespace KeyReceiver
 		private static Form1 form1;
 		private static LowLevelKeyboardProc _proc = HookCallback;
 		private static IntPtr _hookID = IntPtr.Zero;
+		private static bool shiftPressed;
+		private static bool ctrlPressed;
+		private static bool altPressed;
 
 		private const int WH_KEYBOARD_LL = 13;
 		private const int WM_KEYDOWN = 0x0100;
+		private const int WM_KEYUP = 0x0101;
 
 		private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
 
@@ -49,18 +54,52 @@ namespace KeyReceiver
 				return SetWindowsHookEx(WH_KEYBOARD_LL, proc, GetModuleHandle(curModule.ModuleName), 0);
 			}
 		}
-
+		
 		private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
 		{
-			if (nCode >= 0 && wParam == (IntPtr) WM_KEYDOWN)
+			/*if (nCode >= 0 && wParam == (IntPtr) WM_KEYDOWN)
 			{
 				int vkCode = Marshal.ReadInt32(lParam);
 				var key = (char) vkCode;
+			}*/
 
+			int vkCode = Marshal.ReadInt32(lParam);
+
+			switch (vkCode)
+			{
+				case (int)VirtualKeyShort.LSHIFT when wParam == (IntPtr)WM_KEYDOWN:
+				{
+					shiftPressed = true;
+					form1.textBox1.Text += $"\r\nLShift pressed";
+					break;
+				}
+				case (int)VirtualKeyShort.LSHIFT when wParam == (IntPtr)WM_KEYUP:
+				{
+					shiftPressed = false;
+					form1.textBox1.Text += $"\r\nLShift released";
+					break;
+				}
+				case (int)VirtualKeyShort.RSHIFT when wParam == (IntPtr)WM_KEYDOWN:
+				{
+					shiftPressed = true;
+					form1.textBox1.Text += $"\r\nLShift pressed";
+					break;
+				}
+				case (int)VirtualKeyShort.RSHIFT when wParam == (IntPtr)WM_KEYUP:
+				{
+					shiftPressed = false;
+					form1.textBox1.Text += $"\r\nRShift released";
+					break;
+				}
+				default:
+				{
+					var keyDown = wParam == (IntPtr) WM_KEYDOWN;
+					var extraText = keyDown ? "pressed" : "released";
+					form1.textBox1.Text += $"\r\n{(VirtualKeyShort) vkCode} {extraText}";
+					break;
+				}
 			}
-
-			form1.textBox1.Text += $"\r\n{wParam} {Marshal.ReadInt32(lParam)} {wParam == (IntPtr) WM_KEYDOWN}";
-
+			
 			return CallNextHookEx(_hookID, nCode, wParam, lParam);
 		}
 

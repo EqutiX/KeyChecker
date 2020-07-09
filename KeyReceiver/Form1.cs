@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace KeyReceiver
@@ -20,6 +21,7 @@ namespace KeyReceiver
 		private static bool shiftPressed;
 		private static bool ctrlPressed;
 		private static bool altPressed;
+		private static bool recording;
 
 		private const int WH_KEYBOARD_LL = 13;
 		private const int WM_KEYDOWN = 0x0100;
@@ -57,47 +59,18 @@ namespace KeyReceiver
 		
 		private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
 		{
-			/*if (nCode >= 0 && wParam == (IntPtr) WM_KEYDOWN)
-			{
-				int vkCode = Marshal.ReadInt32(lParam);
-				var key = (char) vkCode;
-			}*/
-
 			int vkCode = Marshal.ReadInt32(lParam);
+			var enumContainsValue = Enum.IsDefined(typeof(VirtualKeyShort), (short)vkCode);
+			var keyDown = wParam == (IntPtr) WM_KEYDOWN;
+			var extraText = keyDown ? "pressed" : "released";
 
-			switch (vkCode)
+			if (enumContainsValue)
 			{
-				case (int)VirtualKeyShort.LSHIFT when wParam == (IntPtr)WM_KEYDOWN:
-				{
-					shiftPressed = true;
-					form1.textBox1.Text += $"\r\nLShift pressed";
-					break;
-				}
-				case (int)VirtualKeyShort.LSHIFT when wParam == (IntPtr)WM_KEYUP:
-				{
-					shiftPressed = false;
-					form1.textBox1.Text += $"\r\nLShift released";
-					break;
-				}
-				case (int)VirtualKeyShort.RSHIFT when wParam == (IntPtr)WM_KEYDOWN:
-				{
-					shiftPressed = true;
-					form1.textBox1.Text += $"\r\nLShift pressed";
-					break;
-				}
-				case (int)VirtualKeyShort.RSHIFT when wParam == (IntPtr)WM_KEYUP:
-				{
-					shiftPressed = false;
-					form1.textBox1.Text += $"\r\nRShift released";
-					break;
-				}
-				default:
-				{
-					var keyDown = wParam == (IntPtr) WM_KEYDOWN;
-					var extraText = keyDown ? "pressed" : "released";
-					form1.textBox1.Text += $"\r\n{(VirtualKeyShort) vkCode} {extraText}";
-					break;
-				}
+				form1.textBox1.Text += $"{(VirtualKeyShort)vkCode} {extraText}\r\n";
+			}
+			else
+			{
+				form1.textBox1.Text += $"{vkCode} {extraText} Unknown key\r\n";
 			}
 			
 			return CallNextHookEx(_hookID, nCode, wParam, lParam);
@@ -105,12 +78,40 @@ namespace KeyReceiver
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
+			
+		}
+
+		private void btn_start_Click(object sender, EventArgs e)
+		{
 			_hookID = SetHook(_proc);
+			recording = true;
+			Text = "***RECORDING KEYS***";
 		}
 
 		private void btn_quit_Click(object sender, EventArgs e)
 		{
 			UnhookWindowsHookEx(_hookID);
+			recording = false;
+			Text = "Key receiver";
+		}
+
+		private void btn_copy_Click(object sender, EventArgs e)
+		{
+			if (recording)
+			{
+				MessageBox.Show("Application is still tracking keyinput. Please stop tracking first.");
+				return;
+			}
+
+			var clipboardThread = new Thread(CopyToClipboard);
+			clipboardThread.SetApartmentState(ApartmentState.STA);
+			clipboardThread.IsBackground = false;
+			clipboardThread.Start();
+		}
+
+		private void CopyToClipboard()
+		{
+			Clipboard.SetText(textBox1.Text);
 		}
 	}
 }

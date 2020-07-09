@@ -30,6 +30,8 @@
 		{
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.btn_quit = new System.Windows.Forms.Button();
+			this.btn_start = new System.Windows.Forms.Button();
+			this.btn_copy = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// textBox1
@@ -37,13 +39,14 @@
 			this.textBox1.Location = new System.Drawing.Point(13, 13);
 			this.textBox1.Multiline = true;
 			this.textBox1.Name = "textBox1";
+			this.textBox1.ReadOnly = true;
 			this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.textBox1.Size = new System.Drawing.Size(728, 399);
 			this.textBox1.TabIndex = 0;
 			// 
 			// btn_quit
 			// 
-			this.btn_quit.Location = new System.Drawing.Point(13, 419);
+			this.btn_quit.Location = new System.Drawing.Point(191, 419);
 			this.btn_quit.Name = "btn_quit";
 			this.btn_quit.Size = new System.Drawing.Size(162, 55);
 			this.btn_quit.TabIndex = 1;
@@ -51,11 +54,33 @@
 			this.btn_quit.UseVisualStyleBackColor = true;
 			this.btn_quit.Click += new System.EventHandler(this.btn_quit_Click);
 			// 
+			// btn_start
+			// 
+			this.btn_start.Location = new System.Drawing.Point(13, 419);
+			this.btn_start.Name = "btn_start";
+			this.btn_start.Size = new System.Drawing.Size(162, 55);
+			this.btn_start.TabIndex = 2;
+			this.btn_start.Text = "Start tracking";
+			this.btn_start.UseVisualStyleBackColor = true;
+			this.btn_start.Click += new System.EventHandler(this.btn_start_Click);
+			// 
+			// btn_copy
+			// 
+			this.btn_copy.Location = new System.Drawing.Point(369, 419);
+			this.btn_copy.Name = "btn_copy";
+			this.btn_copy.Size = new System.Drawing.Size(162, 55);
+			this.btn_copy.TabIndex = 3;
+			this.btn_copy.Text = "Copy input";
+			this.btn_copy.UseVisualStyleBackColor = true;
+			this.btn_copy.Click += new System.EventHandler(this.btn_copy_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 486);
+			this.Controls.Add(this.btn_copy);
+			this.Controls.Add(this.btn_start);
 			this.Controls.Add(this.btn_quit);
 			this.Controls.Add(this.textBox1);
 			this.Name = "Form1";
@@ -70,6 +95,8 @@
 
 		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.Button btn_quit;
+		private System.Windows.Forms.Button btn_start;
+		private System.Windows.Forms.Button btn_copy;
 	}
 }
 

@@ -83,6 +83,7 @@ namespace KeyReceiver
 
 		private void btn_start_Click(object sender, EventArgs e)
 		{
+			if (recording) return;
 			_hookID = SetHook(_proc);
 			recording = true;
 			Text = "***RECORDING KEYS***";
@@ -90,6 +91,7 @@ namespace KeyReceiver
 
 		private void btn_quit_Click(object sender, EventArgs e)
 		{
+			if (!recording) return;
 			UnhookWindowsHookEx(_hookID);
 			recording = false;
 			Text = "Key receiver";
@@ -111,6 +113,7 @@ namespace KeyReceiver
 
 		private void CopyToClipboard()
 		{
+			if (string.IsNullOrEmpty(textBox1.Text)) return;
 			Clipboard.SetText(textBox1.Text);
 		}
 	}

@@ -59,20 +59,27 @@ namespace KeyReceiver
 		
 		private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
 		{
-			int vkCode = Marshal.ReadInt32(lParam);
-			var enumContainsValue = Enum.IsDefined(typeof(VirtualKeyShort), (short)vkCode);
-			var keyDown = wParam == (IntPtr) WM_KEYDOWN;
-			var extraText = keyDown ? "pressed" : "released";
+			try
+			{
+				int vkCode = Marshal.ReadInt32(lParam);
+				var enumContainsValue = Enum.IsDefined(typeof(VirtualKeyShort), (short) vkCode);
+				var keyDown = wParam == (IntPtr) WM_KEYDOWN;
+				var extraText = keyDown ? "pressed" : "released";
 
-			if (enumContainsValue)
-			{
-				form1.textBox1.Text += $"{(VirtualKeyShort)vkCode} {extraText}\r\n";
+				if (enumContainsValue)
+				{
+					form1.textBox1.Text += $"{(VirtualKeyShort) vkCode} {extraText}\r\n";
+				}
+				else
+				{
+					form1.textBox1.Text += $"{vkCode} {extraText} Unknown key\r\n";
+				}
 			}
-			else
+			catch (Exception e)
 			{
-				form1.textBox1.Text += $"{vkCode} {extraText} Unknown key\r\n";
+				MessageBox.Show("An error has occured\r\n" + e.Message);
 			}
-			
+
 			return CallNextHookEx(_hookID, nCode, wParam, lParam);
 		}
 

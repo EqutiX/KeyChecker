@@ -28,10 +28,10 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.btn_quit = new System.Windows.Forms.Button();
 			this.btn_start = new System.Windows.Forms.Button();
-			this.btn_copy = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// textBox1
@@ -64,27 +64,18 @@
 			this.btn_start.UseVisualStyleBackColor = true;
 			this.btn_start.Click += new System.EventHandler(this.btn_start_Click);
 			// 
-			// btn_copy
-			// 
-			this.btn_copy.Location = new System.Drawing.Point(369, 419);
-			this.btn_copy.Name = "btn_copy";
-			this.btn_copy.Size = new System.Drawing.Size(162, 55);
-			this.btn_copy.TabIndex = 3;
-			this.btn_copy.Text = "Copy input";
-			this.btn_copy.UseVisualStyleBackColor = true;
-			this.btn_copy.Click += new System.EventHandler(this.btn_copy_Click);
-			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 486);
-			this.Controls.Add(this.btn_copy);
 			this.Controls.Add(this.btn_start);
 			this.Controls.Add(this.btn_quit);
 			this.Controls.Add(this.textBox1);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "Form1";
 			this.Text = "Key receiver";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -96,7 +87,6 @@
 		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.Button btn_quit;
 		private System.Windows.Forms.Button btn_start;
-		private System.Windows.Forms.Button btn_copy;
 	}
 }
 

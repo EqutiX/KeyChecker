@@ -97,24 +97,10 @@ namespace KeyReceiver
 			Text = "Key receiver";
 		}
 
-		private void btn_copy_Click(object sender, EventArgs e)
+		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			if (recording)
-			{
-				MessageBox.Show("Application is still tracking keyinput. Please stop tracking first.");
-				return;
-			}
-
-			var clipboardThread = new Thread(CopyToClipboard);
-			clipboardThread.SetApartmentState(ApartmentState.STA);
-			clipboardThread.IsBackground = false;
-			clipboardThread.Start();
-		}
-
-		private void CopyToClipboard()
-		{
-			if (string.IsNullOrEmpty(textBox1.Text)) return;
-			Clipboard.SetText(textBox1.Text);
+			if (!recording) return;
+			UnhookWindowsHookEx(_hookID);
 		}
 	}
 }

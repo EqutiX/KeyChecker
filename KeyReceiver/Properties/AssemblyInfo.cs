@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("KeyReceiver")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Winvision")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("KeyReceiver")]
-[assembly: AssemblyCopyright("Copyright © Winvision 2020")]
+[assembly: AssemblyCopyright("Copyright © EqutiX 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
